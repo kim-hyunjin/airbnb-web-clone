@@ -38,10 +38,15 @@
     settings.py 안 TIME_ZONE = 'Asia/Seoul'으로 수정.
 
 **서버 구동**
-\$python manage.py runserver
+
+    \$python manage.py runserver
 
 **관리자 계정 만들기**
-\$python manage.py createsuperuser
+
+    \$python manage.py createsuperuser
+
 <http://127.0.0.1:8000/admin/>
 
-\$python manage.py migrate
+**장고와 데이터베이스 동기화**
+
+    \$python manage.py migrate
