@@ -48,3 +48,14 @@
 - view.py는 사용자 화면을 컨트롤
 - models.py에는 데이터베이스
   등등
+
+_User App_
+
+장고에서 제공하는 user모델을 커스텀 user모델로 대체하기
+
+- users의 models.py에서 모델 만들기
+  - models에 작성한 내용을 장고가 form으로 만들어준다.
+  - 그리고 database에 migration과 함께 form에 필요한 정보를 요청.
+- settings.py 에서 AUTH_USER_MODEL = 'myapp.Myuser' 추가
+- \$python manage.py makemigrations
+- \$python manage.py migrate
