@@ -59,3 +59,19 @@ _User App_
 - settings.py 에서 AUTH_USER_MODEL = 'myapp.Myuser' 추가
 - \$python manage.py makemigrations
 - \$python manage.py migrate
+  장고에서 우리가 만든 폴더를 인식하게하려면 setting.py에 등록해줘야한다.
+
+장고는 데이터베이스와 통신. ORM(Object Relational Mapping) 탑재
+
+**User App Recap**
+models.py에 django에서 기본으로 제공하는 field 적용.<br>
+모든 field는 데이터베이스로 들어감.<br>
+장고가 알아서 sql문으로 바꿔줌.<br>
+
+admin.py에서 model을 가져오려면 resister해줘야 함.<bre>
+이를 위해 class필요.
+
+<pre>
+@admin.register(models.User)
+class CustomUserAdmin(UserAdmin):
+</pre>
