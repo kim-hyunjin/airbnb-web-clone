@@ -2,13 +2,45 @@ from django.db import models
 from django_countries.fields import CountryField
 from core import models as core_models
 from users import models as user_models
-# Create your models here.
+
+class AbstractItem(core_models.TimeStampedModel):
+
+    """ Abstract Item """
+    name = models.CharField(max_length=80)
+
+    class Meta:
+        abstract= True
+
+    def __str__(self):
+        return self.name
+
+class RoomType(AbstractItem):
+    """ RoomType Model Definition"""
+    class Meta:
+        verbose_name_plural = "Room Types"
+    
+
+class Amenity(AbstractItem):
+    """ Amenity Model Definition"""
+    class Meta:
+        verbose_name_plural = "Amenities"
+    
+
+class Facility(AbstractItem):
+    """ Facility Model Definition"""
+    class Meta:
+        verbose_name_plural = "Facilities"
+    
+
+class HouseRule(AbstractItem):
+    """ HouseRule Model Definition """
+    class Meta:
+        verbose_name_plural = "House Rule"
+    
 
 class Room(core_models.TimeStampedModel):
 
     """Room Model Definition"""
-
-
 
     name = models.CharField(max_length=140)
     description = models.TextField()
@@ -24,5 +56,14 @@ class Room(core_models.TimeStampedModel):
     check_out = models.TimeField()
     instant_book = models.BooleanField(default=False)
     host = models.ForeignKey(user_models.User, on_delete=models.CASCADE) #room과 user 연결
+    room_type = models.ForeignKey(RoomType, on_delete=models.SET_NULL, null=True)
+    amenities = models.ManyToManyField(Amenity, blank=True)
+    Facilities = models.ManyToManyField(Facility, blank=True)
+    house_rules = models.ManyToManyField(HouseRule, blank=True)
+
+
+
+    def __str__(self):
+        return self.name
 
 
