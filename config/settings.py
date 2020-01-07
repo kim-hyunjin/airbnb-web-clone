@@ -42,13 +42,13 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = ["django-countries"]
 
 PROJECT_APPS = [
-    "core.apps.CoreConfig", 
+    "core.apps.CoreConfig",
     "users.apps.UsersConfig",
     "rooms.apps.RoomsConfig",
     "reviews.apps.ReviewsConfig",
     "reservations.apps.ReservationsConfig",
     "lists.apps.ListsConfig",
-    "conversations.apps.ConversationsConfig"
+    "conversations.apps.ConversationsConfig",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
@@ -129,3 +129,4 @@ STATIC_URL = "/static/"
 
 AUTH_USER_MODEL = "users.User"
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
