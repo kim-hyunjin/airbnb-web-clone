@@ -5,13 +5,27 @@ from core import models as core_models
 class Review(core_models.TimeStampedModel):
     """ Review Model Definition """
 
+    VERY_BAD = 1
+    BAD = 2
+    SOSO = 3
+    GOOD = 4
+    BEST = 5
+
+    RATING_CHOICES = [
+        (VERY_BAD, "1"),
+        (BAD, "2"),
+        (SOSO, "3"),
+        (GOOD, "4"),
+        (BEST, "5"),
+    ]
+
     review = models.TextField()
-    accuracy = models.IntegerField()
-    communication = models.IntegerField()
-    cleanliness = models.IntegerField()
-    location = models.IntegerField()
-    check_in = models.IntegerField()
-    value = models.IntegerField()
+    accuracy = models.IntegerField(choices=RATING_CHOICES)
+    communication = models.IntegerField(choices=RATING_CHOICES)
+    cleanliness = models.IntegerField(choices=RATING_CHOICES)
+    location = models.IntegerField(choices=RATING_CHOICES)
+    check_in = models.IntegerField(choices=RATING_CHOICES)
+    value = models.IntegerField(choices=RATING_CHOICES)
     user = models.ForeignKey(
         "users.User", related_name="reviews", on_delete=models.CASCADE
     )

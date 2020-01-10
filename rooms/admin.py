@@ -15,16 +15,16 @@ class ItemAdmin(admin.ModelAdmin):
     def used_by(self, obj):
         return obj.rooms.count()
 
+
 class PhotoInline(admin.TabularInline):
     model = models.Photo
-
 
 
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
     """Room Admin Definition"""
 
-    inlines = (PhotoInline, )
+    inlines = (PhotoInline,)
     fieldsets = (
         (
             "Basic Info",
@@ -57,7 +57,6 @@ class RoomAdmin(admin.ModelAdmin):
         "instant_book",
         "count_amenities",
         "count_photos",
-        "total_rating",
     )
 
     ordering = ("name", "price", "bedrooms")
@@ -101,4 +100,5 @@ class PhotoAdmin(admin.ModelAdmin):
 
     def get_thumnail(self, obj):
         return mark_safe(f'<img width="50px" src="{obj.file.url}">')
+
     get_thumnail.short_description = "Thumnail"

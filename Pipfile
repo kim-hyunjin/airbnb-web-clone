@@ -10,6 +10,7 @@ django = "==2.2.8"
 pillow = "*"
 django-countries = "*"
 django-seed = "*"
+faker = "*"
 
 [requires]
 python_version = "3.7"

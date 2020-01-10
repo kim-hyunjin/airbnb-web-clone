@@ -11,9 +11,9 @@ class User(AbstractUser):
     GENDER_OTHER = "other"
 
     GENDER_CHOICES = {
-        (GENDER_MALE, "male"),
-        (GENDER_FEMALE, "female"),
-        (GENDER_OTHER, "other"),
+        (GENDER_MALE, "Male"),
+        (GENDER_FEMALE, "Female"),
+        (GENDER_OTHER, "Other"),
     }
 
     LANGUAGE_ENGLISH = "en"
@@ -30,7 +30,11 @@ class User(AbstractUser):
     gender = models.CharField(choices=GENDER_CHOICES, max_length=10, blank=True)
     bio = models.TextField(blank=True)
     birthdate = models.DateField(blank=True, null=True)
-    language = models.CharField(choices=LANGUAGE_CHOICES, max_length=2)
-    currency = models.CharField(choices=CURRENCY_CHOICES, max_length=3)
+    language = models.CharField(
+        choices=LANGUAGE_CHOICES, max_length=2, blank=True, default=CURRENCY_KRW
+    )
+    currency = models.CharField(
+        choices=CURRENCY_CHOICES, max_length=3, blank=True, default=LANGUAGE_KOREAN
+    )
     superhost = models.BooleanField(default=False)
 
