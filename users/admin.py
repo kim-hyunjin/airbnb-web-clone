@@ -2,9 +2,9 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from . import models
 
-# Register your models here.
+
 @admin.register(models.User)
-class CustomUserAdmin(UserAdmin):  # 장고에서 기본으로 제공하는 UserAdmin 상속
+class CustomUserAdmin(UserAdmin):
 
     """ Custom User Admin """
 
@@ -17,9 +17,10 @@ class CustomUserAdmin(UserAdmin):  # 장고에서 기본으로 제공하는 User
                     "gender",
                     "bio",
                     "birthdate",
-                    "language",
+                    "langauge",
                     "currency",
                     "superhost",
+                    "login_method",
                 )
             },
         ),
@@ -33,9 +34,10 @@ class CustomUserAdmin(UserAdmin):  # 장고에서 기본으로 제공하는 User
         "last_name",
         "email",
         "is_active",
-        "language",
+        "langauge",
         "currency",
         "superhost",
         "is_staff",
         "is_superuser",
+        "login_method",
     )
