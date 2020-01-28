@@ -17,10 +17,9 @@ class CustomUserAdmin(UserAdmin):
                     "gender",
                     "bio",
                     "birthdate",
-                    "langauge",
+                    "language",
                     "currency",
                     "superhost",
-                    "login_method",
                 )
             },
         ),
@@ -34,10 +33,9 @@ class CustomUserAdmin(UserAdmin):
         "last_name",
         "email",
         "is_active",
-        "langauge",
+        "language",
         "currency",
         "superhost",
         "is_staff",
         "is_superuser",
-        "login_method",
     )
