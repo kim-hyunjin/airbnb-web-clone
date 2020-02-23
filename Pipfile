@@ -13,6 +13,10 @@ django-seed = "*"
 faker = "*"
 django-dotenv = "*"
 requests = "*"
+npm = "*"
+tailwindcss = "*"
+autoprefixcer = "*"
+autoprefixer = "*"
 
 [requires]
 python_version = "3.7"
