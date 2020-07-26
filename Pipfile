@@ -6,17 +6,12 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-django = "==2.2.9"
-pillow = "*"
+django = "==2.2.14"
+django-dotenv = "*"
 django-countries = "*"
 django-seed = "*"
-faker = "*"
-django-dotenv = "*"
 requests = "*"
-npm = "*"
-tailwindcss = "*"
-autoprefixcer = "*"
-autoprefixer = "*"
+pillow = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
