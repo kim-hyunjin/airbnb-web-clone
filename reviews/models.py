@@ -4,21 +4,8 @@ from core import models as core_models
 
 
 class Review(core_models.TimeStampedModel):
+
     """ Review Model Definition """
-
-    VERY_BAD = 1
-    BAD = 2
-    SOSO = 3
-    GOOD = 4
-    BEST = 5
-
-    RATING_CHOICES = [
-        (VERY_BAD, "1"),
-        (BAD, "2"),
-        (SOSO, "3"),
-        (GOOD, "4"),
-        (BEST, "5"),
-    ]
 
     review = models.TextField()
     accuracy = models.IntegerField(
@@ -58,7 +45,7 @@ class Review(core_models.TimeStampedModel):
         ) / 6
         return round(avg, 2)
 
-        rating_average.short_description = "Avg."
+    rating_average.short_description = "Avg."
 
     class Meta:
         ordering = ("-created",)

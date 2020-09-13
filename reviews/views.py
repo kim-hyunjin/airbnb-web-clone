@@ -3,6 +3,7 @@ from django.shortcuts import redirect, reverse
 from rooms import models as room_models
 from . import forms
 
+
 def create_review(request, room):
     if request.method == "POST":
         form = forms.CreateReviewForm(request.POST)

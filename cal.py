@@ -1,6 +1,7 @@
 from django.utils import timezone
 import calendar
 
+
 class Day:
     def __init__(self, number, past, month, year):
         self.number = number

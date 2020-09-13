@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from core import models as core_models
 
+
 class BookedDay(core_models.TimeStampedModel):
 
     day = models.DateField()
@@ -12,27 +13,29 @@ class BookedDay(core_models.TimeStampedModel):
         verbose_name = "Booked Day"
         verbose_name_plural = "Booked Days"
 
-        def __str__(self):
-            return str(self.day)
+    def __str__(self):
+        return str(self.day)
+
 
 class Reservation(core_models.TimeStampedModel):
+
     """ Reservation Model Definition """
 
     STATUS_PENDING = "pending"
-    STATUS_COMFIRMED = "confirmed"
+    STATUS_CONFIRMED = "confirmed"
     STATUS_CANCELED = "canceled"
 
-    STATUS_CHOICES = {
+    STATUS_CHOICES = (
         (STATUS_PENDING, "Pending"),
-        (STATUS_COMFIRMED, "Comfirmed"),
+        (STATUS_CONFIRMED, "Confirmed"),
         (STATUS_CANCELED, "Canceled"),
-    }
+    )
 
-    check_in = models.DateField()
-    check_out = models.DateField()
     status = models.CharField(
         max_length=12, choices=STATUS_CHOICES, default=STATUS_PENDING
     )
+    check_in = models.DateField()
+    check_out = models.DateField()
     guest = models.ForeignKey(
         "users.User", related_name="reservations", on_delete=models.CASCADE
     )
@@ -41,7 +44,7 @@ class Reservation(core_models.TimeStampedModel):
     )
 
     def __str__(self):
-        return f"{self.room}"
+        return f"{self.room} - {self.check_in}"
 
     def in_progress(self):
         now = timezone.now().date()
@@ -66,7 +69,6 @@ class Reservation(core_models.TimeStampedModel):
             existing_booked_day = BookedDay.objects.filter(
                 day__range=(start, end)
             ).exists()
-
             if not existing_booked_day:
                 super().save(*args, **kwargs)
                 for i in range(difference.days + 1):
@@ -74,4 +76,3 @@ class Reservation(core_models.TimeStampedModel):
                     BookedDay.objects.create(day=day, reservation=self)
                 return
         return super().save(*args, **kwargs)
-

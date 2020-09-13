@@ -3,23 +3,25 @@ from rooms.models import Facility
 
 
 class Command(BaseCommand):
+
     help = "This command creates facilities"
+
+    """ 
+    def add_arguments(self, parser):
+        parser.add_argument(
+            "--times", help="How many times do you want me to tell you that I love you?"
+        )
+    """
 
     def handle(self, *args, **options):
         facilities = [
-            "세탁기",
-            "건조기",
-            "아침식사",
-            "실내 벽난로",
-            "아기 침대",
-            "유아용 식탁의자",
-            "셀프 체크인",
-            "건물 내 무료 주차",
-            "헬스장",
-            "자쿠지",
-            "수영장",
+            "Private entrance",
+            "Paid parking on premises",
+            "Paid parking off premises",
+            "Elevator",
+            "Parking",
+            "Gym",
         ]
-        for a in facilities:
-            Facility.objects.create(name=a)
-        self.stdout.write(self.style.SUCCESS("Facilities created!"))
-
+        for f in facilities:
+            Facility.objects.create(name=f)
+        self.stdout.write(self.style.SUCCESS(f"{len(facilities)} facilities created!"))

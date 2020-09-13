@@ -3,27 +3,57 @@ from rooms.models import Amenity
 
 
 class Command(BaseCommand):
-    help = "This command creates amenities"
 
-    # def add_arguments(self, parser):
+    help = "This command creates many users"
 
-    #   parser.add_argument("--times", help="How many times do you want me to tell you that I love you?")
+    def add_arguments(self, parser):
+        parser.add_argument("--number", help="How many users do you want to create")
 
     def handle(self, *args, **options):
-        amanities = [
-            "주방",
-            "샴푸",
-            "난방",
-            "에어컨",
-            "무선 인터넷",
-            "옷걸이",
-            "다리미",
-            "헤어드라이어",
-            "노트북 작업 공간",
+        amenities = [
+            "Air conditioning",
+            "Alarm Clock",
+            "Balcony",
+            "Bathroom",
+            "Bathtub",
+            "Bed Linen",
+            "Boating",
+            "Cable TV",
+            "Carbon monoxide detectors",
+            "Chairs",
+            "Children Area",
+            "Coffee Maker in Room",
+            "Cooking hob",
+            "Cookware & Kitchen Utensils",
+            "Dishwasher",
+            "Double bed",
+            "En suite bathroom",
+            "Free Parking",
+            "Free Wireless Internet",
+            "Freezer",
+            "Fridge / Freezer",
+            "Golf",
+            "Hair Dryer",
+            "Heating",
+            "Hot tub",
+            "Indoor Pool",
+            "Ironing Board",
+            "Microwave",
+            "Outdoor Pool",
+            "Outdoor Tennis",
+            "Oven",
+            "Queen size bed",
+            "Restaurant",
+            "Shopping Mall",
+            "Shower",
+            "Smoke detectors",
+            "Sofa",
+            "Stereo",
+            "Swimming pool",
+            "Toilet",
+            "Towels",
             "TV",
-            "욕실 단독 사용",
         ]
-        for a in amanities:
+        for a in amenities:
             Amenity.objects.create(name=a)
         self.stdout.write(self.style.SUCCESS("Amenities created!"))
-

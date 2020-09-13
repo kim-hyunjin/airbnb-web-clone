@@ -5,6 +5,7 @@ from django.views.generic import View
 from users import models as user_models
 from . import models, forms
 
+
 def go_conversation(request, a_pk, b_pk):
     user_one = user_models.User.objects.get_or_none(pk=a_pk)
     user_two = user_models.User.objects.get_or_none(pk=b_pk)
@@ -20,7 +21,6 @@ def go_conversation(request, a_pk, b_pk):
 
 
 class ConversationDetailView(View):
-
     def get(self, *args, **kwargs):
         pk = kwargs.get("pk")
         conversation = models.Conversation.objects.get_or_none(pk=pk)

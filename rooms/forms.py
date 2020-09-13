@@ -4,10 +4,11 @@ from . import models
 
 
 class SearchForm(forms.Form):
+
     city = forms.CharField(initial="Anywhere")
     country = CountryField(default="KR").formfield()
     room_type = forms.ModelChoiceField(
-        required=False, empty_label="Any Kind", queryset=models.RoomType.objects.all()
+        required=False, empty_label="Any kind", queryset=models.RoomType.objects.all()
     )
     price = forms.IntegerField(required=False)
     guests = forms.IntegerField(required=False)
@@ -27,6 +28,7 @@ class SearchForm(forms.Form):
         widget=forms.CheckboxSelectMultiple,
     )
 
+
 class CreatePhotoForm(forms.ModelForm):
     class Meta:
         model = models.Photo
@@ -34,8 +36,10 @@ class CreatePhotoForm(forms.ModelForm):
 
     def save(self, pk, *args, **kwargs):
         photo = super().save(commit=False)
-        photo.room = models.Room.objects.get(pk=pk)
+        room = models.Room.objects.get(pk=pk)
+        photo.room = room
         photo.save()
+
 
 class CreateRoomForm(forms.ModelForm):
     class Meta:
