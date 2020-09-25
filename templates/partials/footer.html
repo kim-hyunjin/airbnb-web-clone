@@ -2,13 +2,13 @@
 <footer class="container mx-auto text-center py-10 border-t font-medium text-gray-500">
     <div class="flex flex-col">
         <span>
-            {% trans "Airbnb-clone" %}
+            Airbnb clone.
         </span>
-        <span><a href="https://github.com/kim-hyunjin/airbnb-clone">my github</a></span>
+        <span><i class="fab fa-github"></i><a href="https://github.com/kim-hyunjin/airbnb-clone">github</a></span>
     </div>
     <div class="mt-10 flex">
         {% get_current_language as LANGUAGE_CODE %}
-        <select class="w-1/5 h-8" id="js-lang">
+        <select class="w-1/5 h-8" id="js-lang" style="padding: 0;">
             <option value="en"
                 {% if LANGUAGE_CODE == 'en' %}
                 selected
