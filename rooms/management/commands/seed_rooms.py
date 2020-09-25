@@ -4,6 +4,7 @@ from django.contrib.admin.utils import flatten
 from django_seed import Seed
 from rooms import models as room_models
 from users import models as user_models
+from rooms.models import Room
 
 
 class Command(BaseCommand):
@@ -16,6 +17,8 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
+        if(len(Room.objects.all()) >= 100):
+            return
         number = options.get("number")
         seeder = Seed.seeder()
         all_users = user_models.User.objects.all()

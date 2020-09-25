@@ -5,7 +5,7 @@ from users.models import User
 
 class Command(BaseCommand):
 
-    help = "This command creates amenities"
+    help = "This command creates users"
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -13,6 +13,8 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
+        if(len(User.objects.all()) >= 50):
+            return
         number = options.get("number")
         seeder = Seed.seeder()
         seeder.add_entity(User, number, {"is_staff": False, "is_superuser": False})

@@ -4,12 +4,9 @@ from rooms.models import Amenity
 
 class Command(BaseCommand):
 
-    help = "This command creates many users"
-
-    def add_arguments(self, parser):
-        parser.add_argument("--number", help="How many users do you want to create")
-
     def handle(self, *args, **options):
+        if(len(Amenity.objects.all()) > 0):
+            return
         amenities = [
             "Air conditioning",
             "Alarm Clock",

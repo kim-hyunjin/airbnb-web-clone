@@ -14,6 +14,8 @@ class Command(BaseCommand):
     """
 
     def handle(self, *args, **options):
+        if(len(Facility.objects.all()) > 0):
+            return
         facilities = [
             "Private entrance",
             "Paid parking on premises",
